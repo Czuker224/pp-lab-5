@@ -7,36 +7,32 @@ import src.company.utils.MathUtils;
 
 public class Main {
     public static void main(String[] args) {
-        try {
-            // Tworzenie instancji Person
-            Person person = new Person("John Doe", 30);
+        // Tworzenie tablicy people z pięcioma obiektami instancji Person
+        Person[] people = new Person[5];
 
-            // Wypisywanie danych
-            System.out.println("Name: " + person.getName());
-            System.out.println("Age: " + person.getAge());
+        // Tworzenie stałej b o wartości 10
+        final int b = 10;
+
+        try {
+            // Przypisanie dla każdej instancji nowej instancji Person
+            people[0] = new Person("John Doe", 30);
+            people[1] = new Person("Jane Smith", 25);
+            people[2] = new Person("Alice Johnson", 40);
+            people[3] = new Person("Bob Brown", 50);
+            people[4] = new Person("Emma Wilson", 35);
+
+            // Wyliczenie wartości dla każdej osoby z osobna
+            for (Person person : people) {
+                int result = MathUtils.add(person.getAge(), b);
+                String message = "Wynik dla osoby " + person.getName() + ": " + result;
+
+                // Tworzenie instancji EmailMessenger i przekazanie wyniku jako treści wiadomości
+                EmailMessenger emailMessenger = new EmailMessenger();
+                emailMessenger.sendMessage(message);
+            }
         } catch (InvalidAgeException e) {
-            // Obsługa wyjątku InvalidAgeException
+            // Obsługa wyjątków
             System.err.println("Invalid age: " + e.getMessage());
         }
-
-
-        // Tworzenie instancji EmailMessenger
-        EmailMessenger emailMessenger = new EmailMessenger();
-
-        // Wywołanie metody sendMessage
-        emailMessenger.sendMessage("Hello, this is an email message!");
-
-        // Dodawanie dwóch liczb przy użyciu metody add z klasy MathUtils
-        int sum = MathUtils.add(5, 7);
-
-        // Wypisywanie wyniku na konsoli
-        System.out.println("Wynik dodawania: " + sum);
-
-        // Tworzenie instancji EmailMessenger
-        EmailMessenger emailMessenger2 = new EmailMessenger();
-
-        // Przekazanie wyniku jako treści wiadomości do metody sendMessage
-        emailMessenger2.sendMessage("Wynik dodawania: " + sum);
-
     }
 }
