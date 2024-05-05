@@ -2,6 +2,7 @@ package src;
 
 import src.company.beans.Person;
 import src.company.exceptions.InvalidAgeException;
+import src.company.implementations.EmailMessenger;
 
 public class Main {
     public static void main(String[] args) {
@@ -16,5 +17,13 @@ public class Main {
             // Obsługa wyjątku InvalidAgeException
             System.err.println("Invalid age: " + e.getMessage());
         }
+
+
+        // Tworzenie instancji EmailMessenger
+        EmailMessenger emailMessenger = new EmailMessenger();
+
+        // Wywołanie metody sendMessage
+        emailMessenger.sendMessage("Hello, this is an email message!");
+
     }
 }
