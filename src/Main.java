@@ -3,6 +3,7 @@ package src;
 import src.company.beans.Person;
 import src.company.exceptions.InvalidAgeException;
 import src.company.implementations.EmailMessenger;
+import src.company.utils.MathUtils;
 
 public class Main {
     public static void main(String[] args) {
@@ -24,6 +25,18 @@ public class Main {
 
         // Wywołanie metody sendMessage
         emailMessenger.sendMessage("Hello, this is an email message!");
+
+        // Dodawanie dwóch liczb przy użyciu metody add z klasy MathUtils
+        int sum = MathUtils.add(5, 7);
+
+        // Wypisywanie wyniku na konsoli
+        System.out.println("Wynik dodawania: " + sum);
+
+        // Tworzenie instancji EmailMessenger
+        EmailMessenger emailMessenger2 = new EmailMessenger();
+
+        // Przekazanie wyniku jako treści wiadomości do metody sendMessage
+        emailMessenger2.sendMessage("Wynik dodawania: " + sum);
 
     }
 }
